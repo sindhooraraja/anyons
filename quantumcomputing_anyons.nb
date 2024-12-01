@@ -1,0 +1,744 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframDesktop 14.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       161,          7]
+NotebookDataLength[     27501,        736]
+NotebookOptionsPosition[     24794,        683]
+NotebookOutlinePosition[     25289,        701]
+CellTagsIndexPosition[     25246,        698]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"anyonPositions", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.5", ",", 
+       RowBox[{
+        RowBox[{"Sqrt", "[", "3", "]"}], "/", "2"}]}], "}"}]}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.9364423766726017`*^9, 3.9364423795894203`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"d2f16ec8-2960-f341-addb-8549203c054c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"visualizeAnyonStates", "[", "positions_", "]"}], ":=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+       RowBox[{"Point", "[", "positions", "]"}], ",", 
+       RowBox[{"Text", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{"\"\<Anyon1\>\"", ",", "14"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"positions", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "+", 
+          RowBox[{"{", 
+           RowBox[{"0.1", ",", 
+            RowBox[{"-", "0.1"}]}], "}"}]}]}], "]"}], ",", 
+       RowBox[{"Text", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{"\"\<Anyon2\>\"", ",", "14"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"positions", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "+", 
+          RowBox[{"{", 
+           RowBox[{"0.1", ",", 
+            RowBox[{"-", "0.1"}]}], "}"}]}]}], "]"}], ",", 
+       RowBox[{"Text", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{"\"\<Anyon3\>\"", ",", "14"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"positions", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], "+", 
+          RowBox[{"{", 
+           RowBox[{"0.1", ",", "0.1"}], "}"}]}]}], "]"}], ",", "Thick", ",", 
+       RowBox[{"Line", "[", "positions", "]"}]}], "}"}], ",", 
+     RowBox[{"PlotRange", "->", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.5"}], ",", "1.5"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.5"}], ",", "1.5"}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"AspectRatio", "->", "1"}]}], "]"}]}], ";"}]], "Input",
+ CellLabel->"In[2]:=",ExpressionUUID->"92909dbe-bdfe-094c-884d-2787cd3c916b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"visualizeAnyonStates", "[", "anyonPositions", "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.93644241429364*^9, 3.936442415339319*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"2a91602b-334d-084b-8cfa-a668473d6a51"],
+
+Cell[BoxData[
+ GraphicsBox[
+  {PointSize[Large], 
+   PointBox[NCache[{{0, 0}, {1, 0}, {
+      0.5, Rational[1, 2] 3^Rational[1, 2]}}, {{0, 0}, {1, 0}, {0.5, 
+      0.8660254037844386}}]], InsetBox[
+    StyleBox["\<\"Anyon1\"\>",
+     StripOnInput->False,
+     FontSize->14], {0.1, -0.1}], InsetBox[
+    StyleBox["\<\"Anyon2\"\>",
+     StripOnInput->False,
+     FontSize->14], {1.1, -0.1}], InsetBox[
+    StyleBox["\<\"Anyon3\"\>",
+     StripOnInput->False,
+     FontSize->14], {0.6, 0.9660254037844386}], 
+   {Thickness[Large], 
+    LineBox[NCache[{{0, 0}, {1, 0}, {
+       0.5, Rational[1, 2] 3^Rational[1, 2]}}, {{0, 0}, {1, 0}, {0.5, 
+       0.8660254037844386}}]]}},
+  AspectRatio->1,
+  PlotRange->{{-0.5, 1.5}, {-0.5, 1.5}}]], "Output",
+ CellChangeTimes->{3.936442415911154*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"f2beeba2-c392-814d-9aac-2edbe152d22e"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"braidStep1", "=", 
+   RowBox[{"PermutationProduct", "[", 
+    RowBox[{
+     RowBox[{"Cycles", "[", 
+      RowBox[{"{", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], "}"}], "]"}], ",", 
+     RowBox[{"Cycles", "[", 
+      RowBox[{"{", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], "}"}], "]"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"newPositions", "=", 
+   RowBox[{"Part", "[", 
+    RowBox[{"anyonPositions", ",", 
+     RowBox[{"Permute", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", "braidStep1"}], 
+      "]"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.9364424268100586`*^9, 3.936442427270647*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"10099dab-1418-384d-81df-5d31202a5663"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"visualizeAnyonStates", "[", "newPositions", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.936442431988905*^9, 3.9364424324033127`*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"d26520ac-b07f-2e45-b232-f28959a2890b"],
+
+Cell[BoxData[
+ GraphicsBox[
+  {PointSize[Large], 
+   PointBox[NCache[{{1, 0}, {0.5, Rational[1, 2] 3^Rational[1, 2]}, {0, 
+      0}}, {{1, 0}, {0.5, 0.8660254037844386}, {0, 0}}]], InsetBox[
+    StyleBox["\<\"Anyon1\"\>",
+     StripOnInput->False,
+     FontSize->14], {1.1, -0.1}], InsetBox[
+    StyleBox["\<\"Anyon2\"\>",
+     StripOnInput->False,
+     FontSize->14], {0.6, 0.7660254037844386}], InsetBox[
+    StyleBox["\<\"Anyon3\"\>",
+     StripOnInput->False,
+     FontSize->14], {0.1, 0.1}], 
+   {Thickness[Large], 
+    LineBox[NCache[{{1, 0}, {0.5, Rational[1, 2] 3^Rational[1, 2]}, {0, 
+       0}}, {{1, 0}, {0.5, 0.8660254037844386}, {0, 0}}]]}},
+  AspectRatio->1,
+  PlotRange->{{-0.5, 1.5}, {-0.5, 1.5}}]], "Output",
+ CellChangeTimes->{3.93644243275441*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"ce98cd1a-a6bd-5347-b497-aa0c00144fff"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Define", " ", "braiding", " ", "generators", " ", "as", " ", "quantum", 
+    " ", "gates"}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"braidGenerator1", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"braidGenerator2", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}]}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.93644244004278*^9, 3.9364424404705544`*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"381bec8c-004d-2e4b-bd86-da2bda053fe2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Apply", " ", "braiding", " ", "operations"}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"quantumGate1", "=", 
+     RowBox[{"MatrixPower", "[", 
+      RowBox[{"braidGenerator1", ",", "1"}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"quantumGate2", "=", 
+     RowBox[{"MatrixPower", "[", 
+      RowBox[{"braidGenerator2", ",", "1"}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"combinedGate", "=", 
+     RowBox[{"Dot", "[", 
+      RowBox[{"quantumGate1", ",", "quantumGate2"}], "]"}]}], ";"}], "\n", 
+   RowBox[{"MatrixForm", "[", "combinedGate", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.9364424461877556`*^9, 3.936442446581396*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"c4ef56c1-388b-ad43-879d-889ee4552bd3"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"0", "0", "1"},
+     {"1", "0", "0"},
+     {"0", "1", "0"}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.93644244692622*^9},
+ CellLabel->
+  "Out[12]//MatrixForm=",ExpressionUUID->"946eb31d-7d53-2744-9bc0-\
+126b10135520"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Introduce", " ", "random", " ", "perturbations", " ", "to", " ", 
+    "simulate", " ", "noise"}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"perturbationMatrix", "=", 
+     RowBox[{"RandomReal", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "0.01"}], ",", "0.01"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "3"}], "}"}]}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"noisyGate", "=", 
+     RowBox[{"combinedGate", "+", "perturbationMatrix"}]}], ";"}], "\n", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"MatrixForm", "[", "combinedGate", "]"}], ",", 
+     RowBox[{"MatrixForm", "[", "noisyGate", "]"}]}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.936442452108925*^9, 3.936442452553505*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"6cfc1d3e-c2c6-4141-b123-d256da570fff"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"0", "0", "1"},
+       {"1", "0", "0"},
+       {"0", "1", "0"}
+      },
+      GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]], ",", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {
+        RowBox[{"-", "0.0017662499408294188`"}], 
+        RowBox[{"-", "0.008779140741916047`"}], "0.9915930351941564`"},
+       {"1.0093837435323227`", "0.0008650993703210492`", 
+        RowBox[{"-", "0.008817528205733598`"}]},
+       {
+        RowBox[{"-", "0.0008757590372671445`"}], "1.0089780289074035`", 
+        "0.008393828529034086`"}
+      },
+      GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}], "}"}]], "Output",
+ CellChangeTimes->{3.936442453041334*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"93909b05-5ae5-e242-919c-ae9c2cd4ed92"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"perturbedAnyonPositions", "=", 
+    RowBox[{"Map", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"anyonPositions", "+", "#"}], "&"}], ",", 
+      "perturbationMatrix"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"anyonGraphics", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{"visualizeAnyonStates", ",", "perturbedAnyonPositions"}], "]"}]}],
+   ";"}], "\n", 
+ RowBox[{"GraphicsGrid", "[", 
+  RowBox[{"Partition", "[", 
+   RowBox[{"anyonGraphics", ",", "2"}], "]"}], "]"}]}], "Input",
+ CellLabel->"In[28]:=",ExpressionUUID->"27276229-9b70-cb4f-b649-cb872c8a661b"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {InsetBox[
+     GraphicsBox[
+      {PointSize[Large], 
+       PointBox[{{-0.0017662499408294188`, -0.0017662499408294188`}, {
+        0.991220859258084, -0.008779140741916047}, {0.49159303519415637`, 
+        0.857618438978595}}], InsetBox[
+        StyleBox["\<\"Anyon1\"\>",
+         StripOnInput->False,
+         FontSize->14], {0.0982337500591706, -0.10176624994082942}], InsetBox[
+        StyleBox["\<\"Anyon2\"\>",
+         StripOnInput->False,
+         FontSize->14], {1.091220859258084, -0.10877914074191605}], InsetBox[
+        StyleBox["\<\"Anyon3\"\>",
+         StripOnInput->False,
+         FontSize->14], {0.5915930351941564, 0.957618438978595}], 
+       {Thickness[Large], 
+        LineBox[{{-0.0017662499408294188`, -0.0017662499408294188`}, {
+         0.991220859258084, -0.008779140741916047}, {0.49159303519415637`, 
+         0.857618438978595}}]}},
+      AspectRatio->1,
+      DisplayFunction->Identity,
+      ImagePadding->{{0., 0.}, {0., 0.}},
+      PlotRange->{{-0.5, 1.5}, {-0.5, 1.5}}], {192., -189.}, 
+     ImageScaled[{0.5, 0.5}], {360., 360.},
+     BaseStyle->{Graphics3DBoxOptions -> {SphericalRegion -> False}}], 
+    InsetBox[
+     GraphicsBox[
+      {PointSize[Large], 
+       PointBox[{{0.009383743532322804, 0.009383743532322804}, {
+        1.000865099370321, 0.0008650993703210492}, {0.4911824717942664, 
+        0.857207875578705}}], InsetBox[
+        StyleBox["\<\"Anyon1\"\>",
+         StripOnInput->False,
+         FontSize->14], {0.1093837435323228, -0.09061625646767721}], InsetBox[
+        StyleBox["\<\"Anyon2\"\>",
+         StripOnInput->False,
+         FontSize->14], {1.100865099370321, -0.09913490062967896}], InsetBox[
+        StyleBox["\<\"Anyon3\"\>",
+         StripOnInput->False,
+         FontSize->14], {0.5911824717942664, 0.957207875578705}], 
+       {Thickness[Large], 
+        LineBox[{{0.009383743532322804, 0.009383743532322804}, {
+         1.000865099370321, 0.0008650993703210492}, {0.4911824717942664, 
+         0.857207875578705}}]}},
+      AspectRatio->1,
+      DisplayFunction->Identity,
+      ImagePadding->{{0., 0.}, {0., 0.}},
+      PlotRange->{{-0.5, 1.5}, {-0.5, 1.5}}], {576., -189.}, 
+     ImageScaled[{0.5, 0.5}], {360., 360.},
+     BaseStyle->{Graphics3DBoxOptions -> {SphericalRegion -> False}}]}, {}},
+  ImageSize->{
+    UpTo[600], 
+    UpTo[360]},
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{3.936442619304861*^9},
+ CellLabel->"Out[30]=",ExpressionUUID->"2cc71aec-bc61-9e47-b182-4299b7f408d3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Manipulate", " ", "to", " ", "control", " ", "noise", " ", "level", " ", 
+    "with", " ", "stronger", " ", "perturbations"}], "*)"}], 
+  RowBox[{"Manipulate", "[", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Apply", " ", "perturbations", " ", "scaled", " ", "by", " ", "the", " ", 
+     "noise", " ", "level"}], "*)"}], 
+   RowBox[{
+    RowBox[{
+     RowBox[{"perturbedAnyonPositions", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"anyonPositions", "+", 
+          RowBox[{"noiseLevel", "*", "#"}]}], "&"}], ",", 
+        "perturbationMatrix"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+      "Create", " ", "graphics", " ", "for", " ", "perturbed", " ", 
+       "positions"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"anyonGraphics", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{"visualizeAnyonStates", ",", "perturbedAnyonPositions"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+      "Display", " ", "the", " ", "grid", " ", "of", " ", "perturbed", " ", 
+       "positions"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"GraphicsGrid", "[", 
+      RowBox[{"Partition", "[", 
+       RowBox[{"anyonGraphics", ",", "2"}], "]"}], "]"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{"Control", " ", "for", " ", "the", " ", "noise", " ", "level"}], 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"noiseLevel", ",", "0.5"}], "}"}], ",", "0", ",", "2", ",", 
+      "0.05"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.9364427937097397`*^9, 3.936442813560848*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"4e550dad-98bf-5740-ab47-47614bd74ec9"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`noiseLevel$$ = 0.25, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`noiseLevel$$], 0.5}, 0, 2, 0.05, ControlType -> 
+      Manipulator}}, Typeset`size$$ = {600., {154., 158.90322580645164`}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`noiseLevel$$ = 0.5}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`perturbedAnyonPositions = 
+        Map[$CellContext`anyonPositions + $CellContext`noiseLevel$$ #& , \
+$CellContext`perturbationMatrix]; $CellContext`anyonGraphics = 
+        Map[$CellContext`visualizeAnyonStates, \
+$CellContext`perturbedAnyonPositions]; GraphicsGrid[
+         Partition[$CellContext`anyonGraphics, 2]]), 
+      "Specifications" :> {{{$CellContext`noiseLevel$$, 0.5}, 0, 2, 0.05}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{899., {183.134033203125, 188.865966796875}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.936442805116953*^9, 3.9364428145785484`*^9}},
+ CellLabel->"Out[34]=",ExpressionUUID->"cc421311-63a3-af42-9072-fa98c692d7b6"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Monte", " ", "Carlo", " ", "simulation", " ", "for", " ", "testing", " ", 
+    "fault", " ", "tolerance"}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"QuantumStateEvolution", "[", 
+     RowBox[{"initialState_", ",", "nSteps_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"state", "=", "initialState"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"state", "=", 
+           RowBox[{"Dot", "[", 
+            RowBox[{"state", ",", 
+             RowBox[{"braidGenerator1", "+", 
+              RowBox[{"RandomReal", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", "0.01"}], ",", "0.01"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"3", ",", "3"}], "}"}]}], "]"}]}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"state", "=", 
+           RowBox[{"Dot", "[", 
+            RowBox[{"state", ",", 
+             RowBox[{"braidGenerator2", "+", 
+              RowBox[{"RandomReal", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", "0.01"}], ",", "0.01"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"3", ",", "3"}], "}"}]}], "]"}]}]}], "]"}]}]}], ",", 
+         RowBox[{"{", "nSteps", "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
+       "state"}]}], "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.936442463510988*^9, 3.936442463914934*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"e759c831-7a64-b34a-bac2-34b00a1f8e09"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"finalState", "=", 
+   RowBox[{"QuantumStateEvolution", "[", 
+    RowBox[{"combinedGate", ",", "100"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"MatrixForm", "[", "finalState", "]"}]}], "Input",
+ CellChangeTimes->{{3.9364424687652664`*^9, 3.936442469200039*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"0e5ea2cd-50c6-7648-bbcf-cebc49d420cb"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"0.04805639689409664`", "0.9540128795625586`", "0.003052119888675541`"},
+     {
+      RowBox[{"-", "0.04060958500304672`"}], 
+      RowBox[{"-", "0.12240575994551878`"}], "0.931718685423723`"},
+     {"1.1645738371294367`", "0.030432225799468082`", 
+      RowBox[{"-", "0.04731027762480497`"}]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.9364424695513763`*^9},
+ CellLabel->
+  "Out[18]//MatrixForm=",ExpressionUUID->"cac05c3e-fb2c-4e42-8f23-\
+e2b704975fe7"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Error", " ", "correction", " ", "with", " ", "noise", " ", "amplitude", 
+    " ", "and", " ", "normalization"}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"QuantumStateWithErrorCorrection", "[", 
+     RowBox[{"initialState_", ",", "nSteps_", ",", "noiseAmplitude_"}], "]"}],
+     ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"state", "=", "initialState"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"Do", "[", 
+        RowBox[{"(*", 
+         RowBox[{"Apply", " ", "noisy", " ", "braiding", " ", "operations"}], 
+         "*)"}], 
+        RowBox[{
+         RowBox[{
+          RowBox[{"noisyBraid1", "=", 
+           RowBox[{"braidGenerator1", "+", 
+            RowBox[{"RandomReal", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "noiseAmplitude"}], ",", "noiseAmplitude"}], 
+               "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"3", ",", "3"}], "}"}]}], "]"}]}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"noisyBraid2", "=", 
+           RowBox[{"braidGenerator2", "+", 
+            RowBox[{"RandomReal", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "noiseAmplitude"}], ",", "noiseAmplitude"}], 
+               "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"3", ",", "3"}], "}"}]}], "]"}]}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"state", "=", 
+           RowBox[{"Dot", "[", 
+            RowBox[{"state", ",", "noisyBraid1"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"state", "=", 
+           RowBox[{"Dot", "[", 
+            RowBox[{"state", ",", "noisyBraid2"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{
+           "Normalize", " ", "the", " ", "state", " ", "using", " ", 
+            "Frobenius", " ", "norm"}], "*)"}], 
+          RowBox[{"state", "=", 
+           RowBox[{"state", "/", 
+            RowBox[{"Norm", "[", 
+             RowBox[{"state", ",", "\"\<Frobenius\>\""}], "]"}]}]}]}], ",", 
+         RowBox[{"{", "nSteps", "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
+       "state"}]}], "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.9364424768581257`*^9, 3.936442477292534*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"43cb0c3d-8e2a-d34c-bdc9-3bd8e1da2983"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"correctedState", "=", 
+   RowBox[{"QuantumStateWithErrorCorrection", "[", 
+    RowBox[{"combinedGate", ",", "100", ",", "0.01"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"MatrixForm", "[", "correctedState", "]"}]}], "Input",
+ CellChangeTimes->{{3.936442500285839*^9, 3.936442500770195*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"3ff8a669-0ba9-4d46-bf83-84ac3b7a7f4a"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"0.013008993804140747`", "0.5454992047016218`", 
+      RowBox[{"-", "0.05187662172050293`"}]},
+     {"0.011331015583265758`", 
+      RowBox[{"-", "0.08361755013638816`"}], "0.5966312376935169`"},
+     {"0.5717169479920962`", "0.033941519553056215`", "0.09202599687775566`"}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.9364425013997593`*^9},
+ CellLabel->
+  "Out[21]//MatrixForm=",ExpressionUUID->"d76d756f-3440-5040-92c0-\
+f1c07e1c470c"]
+}, Open  ]]
+},
+WindowSize->{960, 472},
+WindowMargins->{{-5.5, Automatic}, {Automatic, -5.5}},
+PrivateNotebookOptions->{"CloudPublishPath"->"/Published/quantumcomputing_\
+anyons.nb"},
+FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 16, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"2a942c73-5c1c-994e-bf21-bc9d468d25dc"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[561, 20, 516, 15, 28, "Input",ExpressionUUID->"d2f16ec8-2960-f341-addb-8549203c054c"],
+Cell[1080, 37, 1842, 50, 86, "Input",ExpressionUUID->"92909dbe-bdfe-094c-884d-2787cd3c916b"],
+Cell[CellGroupData[{
+Cell[2947, 91, 267, 5, 28, "Input",ExpressionUUID->"2a91602b-334d-084b-8cfa-a668473d6a51"],
+Cell[3217, 98, 861, 22, 377, "Output",ExpressionUUID->"f2beeba2-c392-814d-9aac-2edbe152d22e"]
+}, Open  ]],
+Cell[4093, 123, 814, 23, 48, "Input",ExpressionUUID->"10099dab-1418-384d-81df-5d31202a5663"],
+Cell[CellGroupData[{
+Cell[4932, 150, 265, 4, 28, "Input",ExpressionUUID->"d26520ac-b07f-2e45-b232-f28959a2890b"],
+Cell[5200, 156, 844, 20, 377, "Output",ExpressionUUID->"ce98cd1a-a6bd-5347-b497-aa0c00144fff"]
+}, Open  ]],
+Cell[6059, 179, 992, 29, 48, "Input",ExpressionUUID->"381bec8c-004d-2e4b-bd86-da2bda053fe2"],
+Cell[CellGroupData[{
+Cell[7076, 212, 775, 19, 86, "Input",ExpressionUUID->"c4ef56c1-388b-ad43-879d-889ee4552bd3"],
+Cell[7854, 233, 651, 20, 78, "Output",ExpressionUUID->"946eb31d-7d53-2744-9bc0-126b10135520"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8542, 258, 886, 24, 67, "Input",ExpressionUUID->"6cfc1d3e-c2c6-4141-b123-d256da570fff"],
+Cell[9431, 284, 1512, 41, 64, "Output",ExpressionUUID->"93909b05-5ae5-e242-919c-ae9c2cd4ed92"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10980, 330, 656, 18, 86, "Input",ExpressionUUID->"27276229-9b70-cb4f-b649-cb872c8a661b"],
+Cell[11639, 350, 2515, 56, 329, "Output",ExpressionUUID->"2cc71aec-bc61-9e47-b182-4299b7f408d3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14191, 411, 1794, 45, 181, "Input",ExpressionUUID->"4e550dad-98bf-5740-ab47-47614bd74ec9"],
+Cell[15988, 458, 2023, 38, 391, "Output",ExpressionUUID->"cc421311-63a3-af42-9072-fa98c692d7b6"]
+}, Open  ]],
+Cell[18026, 499, 1694, 44, 105, "Input",ExpressionUUID->"e759c831-7a64-b34a-bac2-34b00a1f8e09"],
+Cell[CellGroupData[{
+Cell[19745, 547, 368, 7, 48, "Input",ExpressionUUID->"0e5ea2cd-50c6-7648-bbcf-cebc49d420cb"],
+Cell[20116, 556, 889, 23, 78, "Output",ExpressionUUID->"cac05c3e-fb2c-4e42-8f23-e2b704975fe7"]
+}, Open  ]],
+Cell[21020, 582, 2464, 63, 181, "Input",ExpressionUUID->"43cb0c3d-8e2a-d34c-bdc9-3bd8e1da2983"],
+Cell[CellGroupData[{
+Cell[23509, 649, 397, 7, 48, "Input",ExpressionUUID->"3ff8a669-0ba9-4d46-bf83-84ac3b7a7f4a"],
+Cell[23909, 658, 869, 22, 125, "Output",ExpressionUUID->"d76d756f-3440-5040-92c0-f1c07e1c470c"]
+}, Open  ]]
+}
+]
+*)
+
